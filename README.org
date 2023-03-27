@@ -1,0 +1,27 @@
+#+title: Readme
+
+* Token Generator for `OAUTH2` authentification on outlook server
+
+This script generates an oauth2 token, that can be used by i.e. [[https://wiki.archlinux.org/title/isync][mbsync.]]
+
+** Setup
+
+- Clone this repo
+#+begin_src shell
+git clone git#github.com:awegsche/oauth2_token.git
+#+end_src
+
+- Setup mbsync as usual. With the following authentication method:
+#+begin_src shell
+AuthMechs XOAUTH2
+PassCmd "python get_token.py --client <CLIENT_ID> --tf <TOKEN_FILE>"
+SSLVersions TLSv1.1 TLSv1.2
+#+end_src
+where `get_token.py` should be the path to the file in this repo
+
+- run the command
+  #+begin_src shell
+python get_token.py --client <CLIENT_ID> --tf <TOKEN_FILE>
+  #+end_src
+
+  once from the command line, to login with azure and generate the token file.
